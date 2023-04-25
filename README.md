@@ -1,7 +1,7 @@
 # Description
 Cygnus: Reborn TinTin++ console UI configuration
 
-![Example: Combat](https://github.com/Nattfarinn/cygnus-reborn/tintin/blob/main/examples/combat.png?raw=true)
+![Example: Combat](https://github.com/Nattfarinn/cygnus-reborn-tintin/blob/main/examples/combat.png?raw=true)
 
 
 # Installation
