@@ -1,0 +1,68 @@
+#NOP MIT License
+#NOP Copyright (c) 2023 Nattfarinn <nattfarinn@gmail.com>
+#NOP See LICENCE file
+
+#FUNCTION {progressbar}
+{
+	#LOCAL {WIDTH}		%1;
+	#LOCAL {COLOR}		%2;
+	#LOCAL {PROGRESS}	%3;
+	#LOCAL {TEXT}		%4;
+	#LOCAL {RIGHT}		%5;
+
+	#LOCAL {FILL}		%1;
+	#LOCAL {FILL_LEFT}	%1;
+	#LOCAL {PROGRESSBAR}	{};
+	#LOCAL {CHARACTERS}	{};
+	#LOCAL {PADDED_TEXT}	@normalize{@align_left{${WIDTH};${TEXT}}};
+	#LOCAL {FILL_COLOR}	<17${COLOR}>;
+	#LOCAL {EMPTY_COLOR}	<199><fff><AAA>;
+	#LOCAL {EMPTY_FLAG}	0;
+
+	#MATH {FILL} {(${WIDTH} * ${PROGRESS}) / 100};
+	#MATH {FILL_LEFT} {$WIDTH - $FILL};
+	#LIST {CHARACTERS} TOKENIZE ${PADDED_TEXT};
+
+	#IF {"$RIGHT" == ""}
+	{
+		#CAT {PROGRESSBAR} ${FILL_COLOR};
+	};
+	#ELSE
+	{
+		#CAT {PROGRESSBAR} ${EMPTY_COLOR};
+	};
+
+	#LOOP 1 ${WIDTH} {I}
+	{
+		#IF {"$RIGHT" == ""}
+		{
+			#IF {$I > $FILL}
+			{
+				#IF {$EMPTY_FLAG == 0}
+				{
+					#LOCAL {EMPTY_FLAG}	1;
+					#CAT {PROGRESSBAR} ${EMPTY_COLOR};
+				};
+			};
+		};
+		#ELSE
+		{
+			#IF {$I > $FILL_LEFT}
+			{
+				#IF {$EMPTY_FLAG == 0}
+				{
+					#LOCAL {EMPTY_FLAG}	1;
+					#CAT {PROGRESSBAR} ${FILL_COLOR};
+				};
+			};
+		};
+
+
+		#CAT {PROGRESSBAR} $CHARACTERS[$I];
+	};
+
+	#CAT {PROGRESSBAR} <099>;
+
+	#RETURN ${PROGRESSBAR};
+};
+

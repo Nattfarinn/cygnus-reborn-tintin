@@ -1,0 +1,70 @@
+#NOP MIT License
+#NOP Copyright (c) 2023 Nattfarinn <nattfarinn@gmail.com>
+#NOP See LICENCE file
+
+#FUNCTION {align_left}
+{
+	#LOCAL {WIDTH}		%1;
+	#LOCAL {TEXT}		@normalize{%2};
+	#LOCAL {PADDING}	%3;
+	#LOCAL {LENGTH}		0;
+	#LOCAL {PADDING_LENGTH}	0;
+
+	#FORMAT {LENGTH} {%L} ${TEXT};
+	#MATH {PADDING_LENGTH} {${LENGTH} + ${PADDING}};
+	#FORMAT {TEXT} {%+${PADDING_LENGTH}s} ${TEXT};
+	#FORMAT {TEXT} {%-${WIDTH}s} ${TEXT};
+
+	#REPLACE {TEXT} { } \x20;
+	#RETURN ${TEXT};
+};
+
+#FUNCTION {align_right}
+{
+	#LOCAL {WIDTH}		%1;
+	#LOCAL {TEXT}		@normalize{%2};
+	#LOCAL {PADDING}	%3;
+	#LOCAL {LENGTH}		0;
+	#LOCAL {PADDING_LENGTH}	0;
+
+	#FORMAT {LENGTH} {%L} ${TEXT};
+	#MATH {PADDING_LENGTH} {${LENGTH} + ${PADDING}};
+	#FORMAT {TEXT} {%-${PADDING_LENGTH}s} ${TEXT};
+	#FORMAT {TEXT} {%+${WIDTH}s} ${TEXT};
+
+	#REPLACE {TEXT} { } \x20;
+	#RETURN ${TEXT};
+};
+
+#FUNCTION {align_center}
+{
+	#LOCAL {WIDTH}		%1;
+	#LOCAL {TEXT}		@normalize{%2};
+	#LOCAL {PADDING}	%3;
+	#LOCAL {CENTER}		0;
+	#LOCAL {TEXT_CENTER}	0;
+	#LOCAL {LENGTH}		0;
+	#LOCAL {PADDING_LENGTH}	0;
+
+	#FORMAT {LENGTH} {%L} ${TEXT};
+	#MATH {PADDING_LENGTH} ${LENGTH} + ${PADDING};
+	#FORMAT {TEXT} {%-${PADDING_LENGTH}s} ${TEXT};
+	#MATH {PADDING_LENGTH} {${PADDING_LENGTH} + ${PADDING}};
+	#FORMAT {TEXT} {%+${PADDING_LENGTH}s} ${TEXT};
+	#FORMAT {LENGTH} {%L} ${TEXT};
+	#MATH {CENTER} {${WIDTH} / 2};
+	#MATH {TEXT_CENTER} {${CENTER} + ${LENGTH} / 2};
+	#FORMAT {TEXT} {%-${TEXT_CENTER}s} ${TEXT};
+	#FORMAT {TEXT} {%+${WIDTH}s} ${TEXT};
+	
+	#REPLACE {TEXT} { } \x20;
+	#RETURN ${TEXT};
+};
+
+#FUNCTION {normalize}
+{
+	#LOCAL {TEXT}		%1;
+	#REPLACE {TEXT} {\\x20} { };
+
+	#RETURN ${TEXT};
+};
