@@ -2,7 +2,7 @@
 Cygnus: Reborn TinTin++ console UI configuration
 
 # Installation
-Download (latest)[https://github.com/Nattfarinn/cygnus-reborn-tintin/releases/latest] release package and unpack it. As TinTin++ does not support relative paths it is necessary to rename directory to `cygnus-reborn-tintin` (without version suffix).
+Download [latest](https://github.com/Nattfarinn/cygnus-reborn-tintin/releases/latest) release package and unpack it. As TinTin++ does not support relative paths it is necessary to rename directory to `cygnus-reborn-tintin` (without version suffix).
 
 Create your own, character specific, configuration file (ie. `my_character.tin`) in the very same directory that contains `cygnus-reborn-tintin` directory with session connection:
 ```
