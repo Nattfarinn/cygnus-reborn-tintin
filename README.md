@@ -1,6 +1,9 @@
 # Description
 Cygnus: Reborn TinTin++ console UI configuration
 
+![Example: Combat](https://github.com/Nattfarinn/cygnus-reborn/tintin/blob/main/examples/combat.png?raw=true)
+
+
 # Installation
 Download [latest](https://github.com/Nattfarinn/cygnus-reborn-tintin/releases/latest) release package and unpack it. As TinTin++ does not support relative paths it is necessary to rename directory to `cygnus-reborn-tintin` (without version suffix).
 
